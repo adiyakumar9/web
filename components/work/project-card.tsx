@@ -87,13 +87,19 @@ export function ProjectCard({ project }: { project: Project }) {
           <span className="text-[10px] font-bold text-accent">
             {project.impact.split('·')[0].trim()}
           </span>
-          <Link
-            href={`/work/${project.slug}`}
-            className="text-[10px] font-extrabold uppercase tracking-wider transition-colors group-hover:text-accent"
-            style={{ color: 'var(--text)' }}
-          >
-            Case Study →
-          </Link>
+          {project.caseStudy ? (
+            <Link
+              href={`/work/${project.slug}`}
+              className="text-[10px] font-extrabold uppercase tracking-wider transition-colors group-hover:text-accent"
+              style={{ color: 'var(--text)' }}
+            >
+              Case Study →
+            </Link>
+          ) : (
+            <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color: 'var(--muted)' }}>
+              {project.impact.split('·').slice(1).join('·').trim()}
+            </span>
+          )}
         </div>
       </div>
     </div>

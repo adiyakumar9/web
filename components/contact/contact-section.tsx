@@ -70,8 +70,8 @@ export function ContactSection() {
         </p>
         <div className="flex gap-2 flex-wrap">
           {[
-            { icon: <Github size={13} />,   label: 'GitHub',   href: 'https://github.com' },
-            { icon: <Linkedin size={13} />, label: 'LinkedIn', href: 'https://linkedin.com' },
+            { icon: <Github size={13} />,   label: 'GitHub',   href: 'https://github.com/adiyakumar9' },
+            { icon: <Linkedin size={13} />, label: 'LinkedIn', href: 'https://linkedin.com/in/aditya-kumar-singh-6b544418b/' },
             { icon: <Download size={13} />, label: 'Resume',   href: '/resume.pdf' },
           ].map(({ icon, label, href }) => (
             <a

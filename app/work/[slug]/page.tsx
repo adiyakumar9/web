@@ -3,7 +3,7 @@ import { projects, getProjectBySlug }      from '@/lib/projects'
 import { CaseStudyLayout }                 from '@/components/work/case-study-layout'
 
 export function generateStaticParams() {
-  return projects.map(p => ({ slug: p.slug }))
+  return projects.filter(p => p.caseStudy).map(p => ({ slug: p.slug }))
 }
 
 export async function generateMetadata({

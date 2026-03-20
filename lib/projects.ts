@@ -129,6 +129,45 @@ export const projects: Project[] = [
       ],
     },
   },
+  {
+    slug:      'oshodhara-event-platform',
+    num:       '04',
+    title:     'Oshodhara — Enterprise Event Platform',
+    shortDesc: 'Admin panel for an event booking platform processing 10,000+ monthly bookings with dynamic pricing.',
+    description:
+      'Architected the admin panel for a large-scale event management platform. Multi-step booking workflows, real-time seat availability, 5-level RBAC, and a dynamic pricing engine.',
+    tags:     ['Angular', 'Node.js', 'PostgreSQL', 'Chart.js'],
+    hotTags:  ['RBAC'],
+    impact:   '10k+ monthly bookings · 5 permission levels',
+    icon:     '🎪',
+    featured: false,
+  },
+  {
+    slug:      't-pro-project-management',
+    num:       '05',
+    title:     'T-Pro — Project Management System',
+    shortDesc: 'Team and project management dashboard with real-time analytics and data visualisation.',
+    description:
+      'Led frontend development for a team management SaaS. Secure routing, complex form handling via React Query + Formik, and real-time analytics dashboards.',
+    tags:     ['React', 'React Query', 'Formik', 'TypeScript'],
+    hotTags:  ['React Query'],
+    impact:   'Production · pms.recru.in',
+    icon:     '📋',
+    featured: false,
+  },
+  {
+    slug:      'social-collider',
+    num:       '06',
+    title:     'Social Collider — Engagement Platform',
+    shortDesc: 'Task-based social platform incentivising engagement across Twitter, Telegram, and YouTube.',
+    description:
+      'Frontend for a social engagement platform where users earn rewards for completing tasks across Twitter, Telegram, and YouTube. Built with Angular and a RESTful API backend.',
+    tags:     ['Angular', 'TypeScript', 'RESTful APIs'],
+    hotTags:  [],
+    impact:   'Production · bizthon.com',
+    icon:     '📱',
+    featured: false,
+  },
 ]
 
 export const featuredProjects = projects.filter(p => p.featured)

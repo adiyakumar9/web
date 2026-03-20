@@ -1,7 +1,25 @@
 const experience = [
-  { company: 'DEVtrust',         role: 'Software Engineer', date: 'Apr 2025 – Now',      active: true  },
-  { company: 'ITH Technologies', role: 'SDE-1',             date: 'Aug 2022 – Jan 2024', active: false },
-  { company: 'ITH Technologies', role: 'Trainee',           date: 'Feb 2022 – Aug 2022', active: false },
+  {
+    company: 'DEVtrust',
+    role:    'Software Engineer',
+    date:    'Apr 2025 – Now',
+    active:  true,
+    highlights: ['100k+ daily redirects · −60% GraphQL latency', 'Fraud detection · multi-tenant RBAC'],
+  },
+  {
+    company: 'ITH Technologies',
+    role:    'SDE-1',
+    date:    'Aug 2022 – Jan 2024',
+    active:  false,
+    highlights: ['95+ Lighthouse · 5k concurrent users', '40+ component library · MFA auth system'],
+  },
+  {
+    company: 'ITH Technologies',
+    role:    'Software Engineer Trainee',
+    date:    'Feb 2022 – Aug 2022',
+    active:  false,
+    highlights: ['WebSocket real-time sync · 85% test coverage'],
+  },
 ]
 
 export function ExperienceCard() {
@@ -44,6 +62,13 @@ export function ExperienceCard() {
               </div>
               <div className="text-[11px]" style={{ color: 'var(--muted)' }}>
                 {e.role}
+              </div>
+              <div className="mt-1 flex flex-col gap-0.5">
+                {e.highlights.map((h, j) => (
+                  <div key={j} className="text-[10px]" style={{ color: 'var(--muted)' }}>
+                    {h}
+                  </div>
+                ))}
               </div>
             </div>
             <div
