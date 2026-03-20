@@ -7,6 +7,7 @@ import { Footer } from '@/components/footer'
 import { Cursor } from '@/components/cursor'
 import { ScrollProgress } from '@/components/scroll-progress'
 import { ChatFab }        from '@/components/chat/chat-fab'
+import { SmoothScroll } from '@/components/smooth-scroll'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
@@ -33,6 +34,7 @@ export default function RootLayout({
         <Footer />
         <Cursor />
         <ChatFab />
+        <SmoothScroll />
       </body>
     </html>
   )
