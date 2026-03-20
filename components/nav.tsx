@@ -16,10 +16,14 @@ const links = [
 export function Nav() {
   const pathname = usePathname()
   const { toggle } = useTheme()
-  const [isDark, setIsDark] = useState(false)
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof document !== 'undefined') {
+      return document.documentElement.getAttribute('data-theme') === 'dark'
+    }
+    return false
+  })
 
   useEffect(() => {
-    setIsDark(document.documentElement.getAttribute('data-theme') === 'dark')
     const handler = (e: Event) => setIsDark((e as CustomEvent).detail)
     window.addEventListener('theme-change', handler)
     return () => window.removeEventListener('theme-change', handler)
