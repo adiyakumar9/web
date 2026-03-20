@@ -1,14 +1,4 @@
-// Static contribution data — 26 weeks x 7 days (hardcoded, deterministic)
-// Level 0 = empty, 1-4 = increasing activity (orange shades)
-const CONTRIB_DATA = [
-  0,1,2,1,3,4,2, 0,1,1,2,0,3,1, 1,2,4,3,1,0,2, 0,0,1,2,3,2,1,
-  3,4,2,1,0,1,2, 0,2,3,1,4,2,0, 1,0,2,1,3,2,4, 2,1,0,3,2,1,0,
-  0,1,3,2,1,4,2, 1,2,0,1,3,2,1, 4,2,1,0,2,3,1, 0,1,2,4,1,2,3,
-  1,0,2,3,1,2,0, 2,4,1,3,2,0,1, 0,2,1,4,3,1,2, 1,0,3,2,1,4,0,
-  2,1,0,3,2,4,1, 0,1,2,1,3,0,2, 3,2,1,4,0,1,2, 1,3,2,0,4,1,2,
-  0,2,1,3,2,4,1, 1,0,2,3,1,2,4, 2,1,4,0,3,1,2, 0,1,2,3,4,1,0,
-  1,2,0,3,1,4,2, 0,1,3,2,1,0,2,
-]
+import { fetchContributions } from '@/lib/github'
 
 const COLORS = [
   'var(--bg3)',
@@ -18,7 +8,16 @@ const COLORS = [
   'var(--accent)',
 ]
 
-export function GithubCard() {
+export async function GithubCard() {
+  const days = await fetchContributions()
+
+  // If no data (token not set or API error), show empty grid
+  const cells = days.length > 0
+    ? days
+    : Array.from({ length: 182 }, (_, i) => ({ date: '', count: 0, level: 0 as const }))
+
+  const totalContribs = days.reduce((sum, d) => sum + d.count, 0)
+
   return (
     <div
       className="col-span-2 rounded-2xl p-6 transition-colors hover:border-accent"
@@ -27,21 +26,32 @@ export function GithubCard() {
         background: 'var(--card)',
       }}
     >
-      <div
-        className="text-[9px] uppercase tracking-[2px] font-bold mb-3"
-        style={{ color: 'var(--muted)' }}
-      >
-        GitHub Activity
+      <div className="flex items-center justify-between mb-3">
+        <div
+          className="text-[9px] uppercase tracking-[2px] font-bold"
+          style={{ color: 'var(--muted)' }}
+        >
+          GitHub Activity
+        </div>
+        {totalContribs > 0 && (
+          <div
+            className="text-[9px] uppercase tracking-[1px]"
+            style={{ color: 'var(--muted)' }}
+          >
+            {totalContribs} contributions this year
+          </div>
+        )}
       </div>
       <div
         className="grid gap-0.5"
         style={{ gridTemplateColumns: 'repeat(26, 1fr)' }}
       >
-        {CONTRIB_DATA.map((level, i) => (
+        {cells.map((day, i) => (
           <div
             key={i}
             className="aspect-square rounded-sm"
-            style={{ background: COLORS[level] }}
+            style={{ background: COLORS[day.level] }}
+            title={day.date ? `${day.date}: ${day.count} contributions` : undefined}
           />
         ))}
       </div>
