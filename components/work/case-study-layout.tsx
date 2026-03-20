@@ -13,7 +13,7 @@ export function CaseStudyLayout({
   const cs = project.caseStudy!
 
   return (
-    <article className="max-w-3xl mx-auto px-10 py-16">
+    <article className="max-w-3xl mx-auto px-5 py-10 md:px-10 md:py-16">
       {/* Back */}
       <Link
         href="/work"
@@ -36,8 +36,8 @@ export function CaseStudyLayout({
         <h1
           className="font-black mb-4"
           style={{
-            fontSize: '42px',
-            letterSpacing: '-0.08em',
+            fontSize: 'clamp(24px, 5vw, 42px)',
+            letterSpacing: '-0.06em',
             color: 'var(--text)',
           }}
         >
@@ -129,11 +129,11 @@ export function CaseStudyLayout({
         >
           Results
         </h2>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {cs.results.map((r, i) => (
             <div
               key={i}
-              className="rounded-xl p-4 text-center transition-colors hover:border-accent"
+              className="rounded-xl p-3 md:p-4 text-center transition-colors hover:border-accent"
               style={{
                 border: '1px solid var(--border)',
                 background: 'var(--bg2)',
@@ -141,12 +141,12 @@ export function CaseStudyLayout({
             >
               <div
                 className="font-black tracking-tight"
-                style={{ fontSize: '28px', color: 'var(--text)' }}
+                style={{ fontSize: 'clamp(18px, 4vw, 28px)', color: 'var(--text)' }}
               >
                 {r.value}
               </div>
               <div
-                className="text-[10px] uppercase tracking-wide mt-1"
+                className="text-[9px] uppercase tracking-wide mt-1"
                 style={{ color: 'var(--muted)' }}
               >
                 {r.label}
@@ -172,7 +172,7 @@ export function CaseStudyLayout({
               style={{ borderBottom: '1px solid var(--border)' }}
             >
               <span
-                className="text-[13px] font-extrabold flex-shrink-0 w-28"
+                className="text-[13px] font-extrabold flex-shrink-0 w-24 md:w-28"
                 style={{ color: 'var(--text)' }}
               >
                 {t.name}
