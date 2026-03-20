@@ -11,10 +11,31 @@ import { SmoothScroll } from '@/components/smooth-scroll'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
-  title: 'Aditya Kumar — Full-Stack Engineer',
-  description:
-    'Full-stack software engineer specialising in real-time systems, GraphQL APIs, and fraud detection. 3+ years building at scale.',
-  keywords: ['Full-Stack Engineer', 'React', 'Next.js', 'GraphQL', 'Node.js'],
+  metadataBase: new URL('https://adityakumar.dev'),
+  title: {
+    default:  'Aditya Kumar — Full-Stack Engineer',
+    template: '%s — Aditya Kumar',
+  },
+  description: 'Full-stack software engineer specialising in real-time systems, GraphQL APIs, and fraud detection. 3+ years building at scale.',
+  keywords:    ['Full-Stack Engineer', 'React', 'Next.js', 'GraphQL', 'Node.js', 'TypeScript'],
+  authors:     [{ name: 'Aditya Kumar' }],
+  openGraph: {
+    title:     'Aditya Kumar — Full-Stack Engineer',
+    description: 'Building systems that scale.',
+    url:       'https://adityakumar.dev',
+    siteName:  'Aditya Kumar',
+    type:      'website',
+    locale:    'en_US',
+  },
+  twitter: {
+    card:        'summary_large_image',
+    title:       'Aditya Kumar — Full-Stack Engineer',
+    description: 'Building systems that scale.',
+  },
+  robots: {
+    index:  true,
+    follow: true,
+  },
 }
 
 export default function RootLayout({
