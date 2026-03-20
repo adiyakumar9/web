@@ -2,6 +2,10 @@ import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { themeScript } from '@/components/theme-provider'
+import { Nav } from '@/components/nav'
+import { Footer } from '@/components/footer'
+import { Cursor } from '@/components/cursor'
+import { ScrollProgress } from '@/components/scroll-progress'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
@@ -22,7 +26,11 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className={`${GeistSans.variable} ${GeistMono.variable} font-sans`}>
-        {children}
+        <ScrollProgress />
+        <Nav />
+        <main>{children}</main>
+        <Footer />
+        <Cursor />
       </body>
     </html>
   )
