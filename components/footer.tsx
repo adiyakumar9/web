@@ -25,7 +25,7 @@ export function Footer() {
         ))}
       </div>
       <span className="text-[10px]" style={{ color: 'var(--muted)' }}>
-        New Delhi · Open to remote
+        Lucknow · Open to remote
       </span>
     </footer>
   )

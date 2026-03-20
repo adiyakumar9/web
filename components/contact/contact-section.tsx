@@ -66,7 +66,7 @@ export function ContactSection() {
           ✉ adityakumar950489@gmail.com ↗
         </a>
         <p className="text-[11px] mb-6" style={{ color: 'var(--muted)' }}>
-          📍 New Delhi, India · +91 9113400868
+          📍 Lucknow, India · +91 9113400868
         </p>
         <div className="flex gap-2 flex-wrap">
           {[

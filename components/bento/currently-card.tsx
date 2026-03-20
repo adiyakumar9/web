@@ -5,7 +5,7 @@ export function CurrentlyCard() {
         Now
       </div>
       <div className="text-[15px] font-extrabold leading-tight">
-        SDE @ DEVtrust<br />New Delhi 📍
+        SDE @ DEVtrust<br />Lucknow 📍
       </div>
     </div>
   )
