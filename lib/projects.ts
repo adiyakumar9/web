@@ -68,7 +68,7 @@ export const projects: Project[] = [
     hotTags:  ['Botpress'],
     impact:   '100ms avg response · Rate-limited · JWT secured',
     icon:     '🤖',
-    featured: true,
+    featured: false,
     caseStudy: {
       problem:
         'Wanted a portfolio differentiator that demonstrated full-stack skills — not just a static CV.',
@@ -167,6 +167,87 @@ export const projects: Project[] = [
     impact:   'Production · bizthon.com',
     icon:     '📱',
     featured: false,
+  },
+  {
+    slug:      'media-intercept',
+    num:       '07',
+    title:     'Media Intercept — Affiliate Marketing Platform',
+    shortDesc: 'Full-stack SaaS for affiliate networks — click tracking, fraud detection, and payout management across 3 portals.',
+    description:
+      'An Everflow-inspired affiliate marketing platform built from scratch. Node.js/GraphQL backend with 45 database entities, fraud detection via 24metrics API, and three role-based portals (network, affiliate, advertiser) built in Next.js 16.',
+    tags:     ['Node.js', 'PostgreSQL', 'TypeORM', 'Docker'],
+    hotTags:  ['GraphQL', 'Next.js'],
+    impact:   '10k+ clicks/min · 45 entities · 3 portals',
+    icon:     '📊',
+    featured: true,
+    caseStudy: {
+      problem:
+        'The team needed a production-grade affiliate tracking platform — replacing an expensive Everflow subscription — with custom fraud detection, multi-tenant RBAC, and a clean publisher-facing portal.',
+      role: 'Full-stack engineer — owned GraphQL API design, entity modelling, fraud integration, and Next.js frontend across all three portals.',
+      solution:
+        'Apollo Server 5 GraphQL API with 15 resolver modules, TypeORM with 45 entities and optimised indexes for high-volume click ingestion, 24metrics fraud API integration, payout rate-locking at click time, and a Next.js 16 + shadcn/ui component library shared across employee, affiliate, and advertiser portals.',
+      highlights: [
+        'Payout rates locked at click time — prevents mid-month disputes when custom rates change',
+        'DataLoader pattern across all GraphQL resolvers — eliminates N+1 queries at scale',
+        '24metrics fraud API with monitor/soft-block/hard-block modes + manual override',
+        'Ticket-based cherry-pick CI/CD pipeline — selective deployment to staging and production',
+        '3 fully-isolated Next.js portals sharing one Apollo Client + shadcn component library',
+        'BigInt IDs on Click/Conversion entities — supports 9.2 quintillion records',
+      ],
+      results: [
+        { label: 'Click throughput',   value: '10k+/min' },
+        { label: 'Database entities',  value: '45'       },
+        { label: 'GraphQL resolvers',  value: '15'       },
+        { label: 'User portals',       value: '3'        },
+      ],
+      techDetails: [
+        { name: 'Apollo Server 5', why: 'Type-safe GraphQL with resolver-level auth and permission directives' },
+        { name: 'TypeORM + PostgreSQL', why: '45-entity schema with JSONB, BigInt IDs, and strategic indexes for aggregation queries' },
+        { name: 'Next.js 16 + shadcn/ui', why: 'App Router server components for each portal; Radix-based component library ensures a11y' },
+        { name: 'Docker + GitLab CI', why: 'Ticket-based cherry-pick pipeline — deploy individual tickets to staging or production without full branch merge' },
+      ],
+    },
+  },
+  {
+    slug:      'smart-attendance',
+    num:       '08',
+    title:     'SmartAttendance — Biometric Attendance System',
+    shortDesc: 'Offline-first Android app with face recognition, active liveness detection, and GPS geofencing for enterprise attendance.',
+    description:
+      'An enterprise-grade mobile attendance system built with React Native. Uses Neurotec SDK 13.1 for 1:N face matching and active liveness detection, WatermelonDB for offline-first storage, and an Android foreground service for background sync. Works fully offline; records sync automatically on reconnect.',
+    tags:     ['React Native', 'WatermelonDB', 'Android', 'TypeScript'],
+    hotTags:  ['Neurotec SDK'],
+    impact:   'Offline-first · 1:N biometrics · 17.6k LoC',
+    icon:     '🤳',
+    featured: true,
+    caseStudy: {
+      problem:
+        'Field and factory employees often work in areas with poor connectivity. Traditional attendance systems requiring constant internet connection caused widespread missed check-ins and unreliable records.',
+      role: 'Lead React Native engineer — architected the offline-first data layer, Neurotec SDK bridge, background sync service, and role-based navigation stacks.',
+      solution:
+        'WatermelonDB as the offline-first reactive database with a SyncOrchestrator that queues all operations in a pending_operations table. An Android foreground service handles background sync and resumes after device reboot. Neurotec SDK 13.1 is bridged via native Java modules for 1:N face matching at FAR 0.01%, with multi-step active liveness (passive, blink, head-turn) to prevent spoofing.',
+      highlights: [
+        '1:N face matching via Neurotec SDK 13.1 — 0.01% FAR with configurable threshold',
+        'Multi-step active liveness detection (passive + blink + head-turn) prevents photo spoofing',
+        'Offline-first: all attendance operations work without internet; auto-sync on reconnect',
+        'Android foreground service persists sync across app lifecycle and device reboots',
+        'GPS geofencing validates attendance is marked within the authorised office radius',
+        'Conflict resolver handles offline-created users being duplicated online by emp_code deduplication',
+        'Repository pattern with mock implementations — full demo mode without a backend',
+      ],
+      results: [
+        { label: 'Matching accuracy', value: 'FAR 0.01%'  },
+        { label: 'Codebase',          value: '17.6k LoC'  },
+        { label: 'DB tables',         value: '8 (WatermelonDB)' },
+        { label: 'Offline capable',   value: '100%'       },
+      ],
+      techDetails: [
+        { name: 'Neurotec SDK 13.1', why: 'Industry-leading 1:N face matching with active liveness detection and demographics extraction — bridged via custom Java native module' },
+        { name: 'WatermelonDB', why: 'Reactive offline-first SQLite — observable queries keep UI in sync with local DB without explicit re-fetching' },
+        { name: 'Android Foreground Service', why: 'SyncService runs independently of app lifecycle; BootReceiver re-registers sync after device restart' },
+        { name: 'React Native + TypeScript', why: 'Single codebase across Android; strict TypeScript prevents runtime type errors in safety-critical biometric flow' },
+      ],
+    },
   },
 ]
 

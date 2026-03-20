@@ -38,8 +38,8 @@ export function HeroRight() {
           ⚙️
         </span>
         <div className="text-[12px]" style={{ color: 'var(--text2)' }}>
-          <strong className="text-accent font-bold">Currently: </strong>
-          Rebuilding this portfolio in Next.js with a clean minimal design system.
+          <strong className="text-accent font-bold">Currently building: </strong>
+          Media Intercept — affiliate marketing SaaS with GraphQL API, fraud detection &amp; 3-portal dashboard.
         </div>
       </div>
     </div>
