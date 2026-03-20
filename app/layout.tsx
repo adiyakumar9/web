@@ -6,6 +6,7 @@ import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
 import { Cursor } from '@/components/cursor'
 import { ScrollProgress } from '@/components/scroll-progress'
+import { ChatFab }        from '@/components/chat/chat-fab'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
@@ -31,6 +32,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <Cursor />
+        <ChatFab />
       </body>
     </html>
   )
