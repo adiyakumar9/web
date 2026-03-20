@@ -4,7 +4,7 @@ import { FeaturedCard } from './featured-card'
 export function HeroRight() {
   return (
     <div
-      className="flex flex-col justify-center px-12 py-16"
+      className="flex flex-col justify-center px-5 py-10 md:px-12 md:py-16"
       style={{ background: 'var(--bg2)' }}
     >
       {/* Eyebrow */}

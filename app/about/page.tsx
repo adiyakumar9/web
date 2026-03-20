@@ -10,12 +10,12 @@ import { ExperienceCard }  from '@/components/bento/experience-card'
 export const metadata = {
   title: 'About — Aditya Kumar',
   description:
-    'Full-stack engineer, 3+ years experience in real-time systems and scalable APIs.',
+    'Full-stack & mobile engineer with 3+ years experience in real-time systems, fraud detection, GraphQL APIs, and biometric mobile applications.',
 }
 
 export default function AboutPage() {
   return (
-    <div className="max-w-6xl mx-auto px-10 py-16">
+    <div className="max-w-6xl mx-auto px-5 py-10 md:px-10 md:py-16">
       <div className="mb-10">
         <div
           className="text-[9px] uppercase tracking-[3px] font-bold mb-3"
@@ -26,7 +26,7 @@ export default function AboutPage() {
         <h1
           className="font-black"
           style={{
-            fontSize: '42px',
+            fontSize: 'clamp(28px, 5vw, 42px)',
             letterSpacing: '-0.08em',
             color: 'var(--text)',
           }}
@@ -40,7 +40,7 @@ export default function AboutPage() {
         <CurrentlyCard />
         <StatCard value="3" label="Years experience" />
         <StackCard />
-        <StatCard value="10" label="Projects shipped" />
+        <StatCard value="8" label="Projects shipped" />
         <GithubCard />
         <TestimonialCard />
         <ExperienceCard />

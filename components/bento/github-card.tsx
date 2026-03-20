@@ -20,7 +20,7 @@ export async function GithubCard() {
 
   return (
     <div
-      className="col-span-2 rounded-2xl p-6 transition-colors hover:border-accent"
+      className="col-span-1 sm:col-span-2 rounded-2xl p-6 transition-colors hover:border-accent"
       style={{
         border: '1px solid var(--border)',
         background: 'var(--card)',

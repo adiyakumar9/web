@@ -1,7 +1,7 @@
 export function BioCard() {
   return (
     <div
-      className="col-span-2 rounded-2xl p-6 transition-colors hover:border-accent"
+      className="col-span-1 sm:col-span-2 rounded-2xl p-6 transition-colors hover:border-accent"
       style={{
         border: '1px solid var(--border)',
         background: 'var(--bg2)',
@@ -25,8 +25,9 @@ export function BioCard() {
         style={{ color: 'var(--text2)' }}
       >
         I build the systems behind products — real-time data pipelines, fraud
-        detection engines, and GraphQL APIs. I care about performance, clean
-        code, and shipping things that actually work at scale.
+        detection engines, GraphQL APIs, and offline-first biometric mobile
+        systems. I care about performance, clean code, and shipping things that
+        actually work at scale.
       </p>
     </div>
   )

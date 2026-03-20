@@ -27,14 +27,14 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="grid"
-      style={{
-        gridTemplateColumns: '1fr 1fr',
-        borderTop: '1px solid var(--border)',
-      }}
+      className="grid grid-cols-1 md:grid-cols-2"
+      style={{ borderTop: '1px solid var(--border)' }}
     >
       {/* Left — info */}
-      <div className="px-10 py-[72px]" style={{ borderRight: '1px solid var(--border)' }}>
+      <div
+        className="px-5 py-12 md:px-10 md:py-[72px]"
+        style={{ borderBottom: '1px solid var(--border)' }}
+      >
         <div
           className="text-[9px] uppercase tracking-[3px] font-bold mb-4"
           style={{ color: 'var(--muted)' }}
@@ -44,7 +44,7 @@ export function ContactSection() {
         <h2
           className="font-black leading-[0.95] mb-5"
           style={{
-            fontSize: '42px',
+            fontSize: 'clamp(28px, 4vw, 42px)',
             letterSpacing: '-0.1em',
             color: 'var(--text)',
           }}
@@ -93,7 +93,7 @@ export function ContactSection() {
       </div>
 
       {/* Right — form */}
-      <div className="px-10 py-[72px]" style={{ background: 'var(--bg2)' }}>
+      <div className="px-5 py-12 md:px-10 md:py-[72px]" style={{ background: 'var(--bg2)' }}>
         <div
           className="text-[9px] uppercase tracking-[3px] font-bold mb-6"
           style={{ color: 'var(--muted)' }}

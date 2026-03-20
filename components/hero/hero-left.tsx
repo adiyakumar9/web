@@ -4,8 +4,8 @@ import { MetricCounter } from './metric-counter'
 export function HeroLeft() {
   return (
     <div
-      className="flex flex-col justify-center px-10 py-[72px] relative"
-      style={{ borderRight: '1px solid var(--border)' }}
+      className="flex flex-col justify-center px-5 py-12 md:px-10 md:py-[72px] relative"
+      style={{ borderRight: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}
     >
       {/* Dot grid background — fades out toward right */}
       <div
@@ -61,11 +61,12 @@ export function HeroLeft() {
           paddingLeft: '16px',
         }}
       >
-        Full-stack engineer specialising in{' '}
+        Full-stack &amp; mobile engineer specialising in{' '}
         <strong style={{ color: 'var(--text)' }}>real-time systems</strong>,{' '}
-        <strong style={{ color: 'var(--text)' }}>fraud detection</strong>, and{' '}
+        <strong style={{ color: 'var(--text)' }}>fraud detection</strong>,{' '}
+        <strong style={{ color: 'var(--text)' }}>biometric systems</strong>, and{' '}
         <strong style={{ color: 'var(--text)' }}>scalable APIs</strong>. 3+ years shipping
-        production systems at DEVtrust.
+        production at DEVtrust.
       </p>
 
       {/* Metrics row */}
@@ -76,7 +77,7 @@ export function HeroLeft() {
           background: 'var(--card)',
         }}
       >
-        <MetricCounter value={100} suffix="k+" label="Daily redirects" />
+        <MetricCounter value={100} suffix="k+" label="Daily link redirects" />
         <MetricCounter value={60}  suffix="%" prefix="−" label="API latency" />
         {/* Static third metric — no counter needed */}
         <div

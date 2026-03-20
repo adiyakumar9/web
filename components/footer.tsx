@@ -3,13 +3,13 @@ const badges = ['Next.js 16', 'Tailwind CSS', 'TypeScript', 'Vercel']
 export function Footer() {
   return (
     <footer
-      className="flex items-center justify-between px-10 py-5"
+      className="flex flex-col md:flex-row items-center justify-between gap-3 px-5 py-4 md:px-10 md:py-5"
       style={{ borderTop: '1px solid var(--border)' }}
     >
       <span className="text-[10px]" style={{ color: 'var(--muted)' }}>
         © {new Date().getFullYear()} Aditya Kumar
       </span>
-      <div className="flex gap-2">
+      <div className="flex gap-2 flex-wrap justify-center">
         {badges.map(b => (
           <span
             key={b}

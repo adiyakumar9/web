@@ -1,10 +1,10 @@
-const primary   = ['Next.js', 'React', 'Node.js', 'GraphQL', 'TypeScript']
-const secondary = ['PostgreSQL', 'Angular', 'Docker', 'AWS', 'Redis', 'Tailwind', 'Framer Motion']
+const primary   = ['Next.js', 'React', 'Node.js', 'GraphQL', 'TypeScript', 'React Native']
+const secondary = ['PostgreSQL', 'Angular', 'Docker', 'AWS', 'Redis', 'WatermelonDB', 'Neurotec SDK', 'Tailwind']
 
 export function StackCard() {
   return (
     <div
-      className="col-span-2 rounded-2xl p-6 transition-colors hover:border-accent"
+      className="col-span-1 sm:col-span-2 rounded-2xl p-6 transition-colors hover:border-accent"
       style={{
         border: '1px solid var(--border)',
         background: 'var(--card)',

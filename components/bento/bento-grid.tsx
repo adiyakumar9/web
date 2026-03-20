@@ -1,9 +1,6 @@
 export function BentoGrid({ children }: { children: React.ReactNode }) {
   return (
-    <div
-      className="grid gap-3"
-      style={{ gridTemplateColumns: 'repeat(4, 1fr)' }}
-    >
+    <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
       {children}
     </div>
   )
