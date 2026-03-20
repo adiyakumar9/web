@@ -9,61 +9,34 @@ function countToLevel(count: number): 0 | 1 | 2 | 3 | 4 {
 }
 
 export async function fetchContributions(): Promise<ContribDay[]> {
-  const token    = process.env.GITHUB_TOKEN
   const username = process.env.GITHUB_USERNAME
-
-  if (!token || !username) return []
-
-  const to   = new Date()
-  const from = new Date(to)
-  from.setFullYear(from.getFullYear() - 1)
-
-  const query = `
-    query($username: String!, $from: DateTime!, $to: DateTime!) {
-      user(login: $username) {
-        contributionsCollection(from: $from, to: $to) {
-          contributionCalendar {
-            weeks {
-              contributionDays {
-                date
-                contributionCount
-              }
-            }
-          }
-        }
-      }
-    }
-  `
+  if (!username) return []
 
   try {
-    const res = await fetch('https://api.github.com/graphql', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        query,
-        variables: { username, from: from.toISOString(), to: to.toISOString() },
-      }),
-      next: { revalidate: 3600 }, // cache for 1 hour
+    // GitHub's public contribution calendar SVG — no auth required
+    const res = await fetch(`https://github.com/users/${username}/contributions`, {
+      headers: { Accept: 'text/html' },
+      next: { revalidate: 3600 },
     })
 
     if (!res.ok) return []
 
-    const data = await res.json()
-    const weeks = data?.data?.user?.contributionsCollection?.contributionCalendar?.weeks ?? []
+    const html = await res.text()
 
-    const days: ContribDay[] = weeks.flatMap(
-      (week: { contributionDays: { date: string; contributionCount: number }[] }) =>
-        week.contributionDays.map((d) => ({
-          date:  d.date,
-          count: d.contributionCount,
-          level: countToLevel(d.contributionCount),
-        }))
-    )
+    // Parse every <rect> element that has data-date and data-count attributes
+    const rects = html.match(/<rect[^>]*data-date[^>]*>/g) ?? []
 
-    // Return last 26 weeks (182 days) to match the grid size
+    const days: ContribDay[] = rects
+      .map((rect) => {
+        const dateMatch  = rect.match(/data-date="([^"]+)"/)
+        const countMatch = rect.match(/data-count="(\d+)"/)
+        if (!dateMatch || !countMatch) return null
+        const count = parseInt(countMatch[1], 10)
+        return { date: dateMatch[1], count, level: countToLevel(count) }
+      })
+      .filter((d): d is ContribDay => d !== null)
+
+    // Return last 182 cells (26 weeks × 7 days) to match the grid
     return days.slice(-182)
   } catch {
     return []
